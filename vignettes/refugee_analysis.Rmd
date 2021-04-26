@@ -1,9 +1,19 @@
 ---
 title: "Accepted Refugees United States"
-author: "Fabio Votta"
-date: "21.09.2018"
-output: github_document
+date: '21.09.2018'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Accepted Refugees United States}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 Data from: http://ireports.wrapsnet.org/Interactive-Reporting/EnumType/Report?ItemPath=/rpt_WebArrivalsReports/MX%20-%20Arrivals%20by%20Nationality%20and%20Religion
 
@@ -17,6 +27,8 @@ options(scipen = 999)
 # install.packages("pacman")
 
 pacman::p_load(tidyverse, readxl, sjmisc, urbnmapr, tabulizer, viridis, magrittr, countrycode)
+
+library(usaRefugeeData)
 
 # Creates folders
 # tidytemplate::data_dir()
@@ -35,19 +47,27 @@ refugee_dat <- read_excel("data/refugee_dat.xls", skip = 1) %>%
   gather(year, n, -cntry) %>% 
   mutate(year = str_replace(year, "CY ", "") %>% as.numeric)
 
-refugee_dat %>% group_by(cntry) %>% tally() %>% arrange(desc(nn)) %>% .[1:10,] %>% .$cntry -> top10
+refugee_dat %>% 
+  group_by(cntry) %>% 
+  tally() %>% 
+  arrange(desc(nn)) %>% 
+  .[1:10,] %>% 
+  .$cntry -> top10
 
-year_dat <- tibble(year = c(2005, 2009, 2013, 2017), label = c("Bush II", "Obama I", "Obama II", "Trump I"))
+year_dat <- tibble(year = c(2005, 2009, 2013, 2017), 
+                   label = c("Bush II", "Obama I", "Obama II", "Trump I"))
 
 qualitative <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a')
 
-n_refugee_total <- refugee_dat %>% use_series(n) %>% sum
+n_refugee_total <- refugee_dat %>% 
+                    use_series(n) %>% 
+                    sum
 
 refugee_dat %>% 
   filter(str_detect(cntry, "Burma"))
 
 
- read_excel("data/refugee_dat.xls", skip = 1) %>% 
+read_excel("data/refugee_dat.xls", skip = 1) %>% 
    tidyr::fill(X__1) %>% 
    # filter(X__1 == "Burma") %>% 
   rename(religion = Religion, cntry = X__1) %>% 
@@ -186,7 +206,7 @@ gg_refugee %>% animate(
   nframes = 500, fps = 15, width = 1000, height = 600, detail = 1
 )
 
-anim_save("images/gg_refugee.gif")
+# anim_save("images/gg_refugee.gif")
 
 ```
 
@@ -341,7 +361,7 @@ gg_anim_region %>% animate(
   nframes = 500, fps = 15, width = 1000, height = 600, detail = 1
 )
 
-anim_save("images/gg_anim_region.gif")
+# anim_save("images/gg_anim_region.gif")
 
 ```
 
@@ -462,7 +482,7 @@ gg_religion %>% animate(
   nframes = 500, fps = 15, width = 1000, height = 600, detail = 1
 )
 
-anim_save("images/gg_religion.gif")
+# anim_save("images/gg_religion.gif")
 ```
 
 ![](images/gg_religion.gif) 
@@ -716,7 +736,7 @@ world_map_anim %>% animate(
   nframes = 30, fps = 15, width = 1000, height = 600, detail = 1
 )
 
-anim_save("images/world_map_anim.gif")
+# anim_save("images/world_map_anim.gif")
 ```
 
 ## Arrival Data (by state)

@@ -1,0 +1,270 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+```{r}
+library(tidyverse)
+library(rvest)
+
+url <- "http://www.footballoutsiders.com/stats/snapcounts"
+pgsession <- html_session(url)
+pgform <-html_form(pgsession)[[3]]
+
+
+filled_form <-set_values(pgform,
+            "team" = "ALL",
+            "week" = "1",
+            "pos"  = "ALL",
+            "year" = "2015"             
+ )
+
+d <- submit_form(session=pgsession, form=filled_form)
+
+d
+```
+
+
+
+
+
+```{r}
+## manually set first value
+1:266 %>% walk(download_all)
+```
+ 
+
+
+## Number and cntry
+
+```{r}
+
+rename_dat <- dir("C:/Users/fabio/Downloads") %>% 
+  keep(str_detect(., "desktop") %>% not) %>% 
+  parse_number() %>% 
+  sort() %>% 
+  tibble(value = ., cntry = cntry_names) %>% 
+  mutate(renamer = ifelse(nchar(value) == 1, glue("0{value}"), value)) %>% 
+  mutate(renamer = glue("{renamer}_{snakecase::to_snake_case(cntry)}")) 
+
+
+
+complete_ages <- c("Under 14" , "Age 14 to 20", "Age 21 to 30", 
+                  "Age 31 to 40", "Age 41 to 50", "Age 51 to 64", 
+                  "Age 65 and Over")
+
+is_complete_age <- function(only_ages) {
+  only_ages <- only_ages %>% na.omit()  
+  complete_ages %>% 
+    map_lgl(~str_detect(only_ages, .x) %>% any)
+}
+
+
+complete_years <- glue("CY {2002:2018}") %>% as.character() 
+
+is_complete_years <- function(x) {
+  data <- x %>% na.omit()  
+  complete_years %>% 
+    map_lgl(~str_detect(data, .x) %>% any)
+}
+
+
+complete_genders <- c(glue("{complete_years} F"), glue("{complete_years} M"))
+
+is_complete_gender <- function(x) {
+  data <- na.omit(x)
+  complete_genders %>% 
+    map_lgl(~str_detect(data, .x) %>% any)
+}
+
+
+get_checkers <- function(raw_dat) {
+  
+age_check <- raw_dat %>% 
+  magrittr::use_series(department_of_state) %>% 
+  is_complete_age %>% 
+  tibble(complete_ages, present = .)
+
+years_check <- raw_dat %>% 
+  filter(department_of_state == "Characteristic") %>% t %>% as.character %>% na.omit() %>% 
+  keep(str_detect(., "CY")) %>% 
+  is_complete_years %>% 
+  tibble(complete_years, present = .)
+
+gender_check <- raw_dat %>% 
+  tidyr::fill(department_of_state, .direction = "down") %>% 
+  filter(department_of_state == "Characteristic") %>% t %>% as_tibble() %>%
+  tidyr::fill(V1, .direction = "down") %>% 
+  filter(str_detect(V2, "M|F")) %>% 
+  mutate(tester = paste(V1, V2)) %>% 
+  use_series(tester) %>% 
+  is_complete_gender() %>% 
+  tibble(complete_genders, present = .) %>% 
+  arrange(complete_genders)
+
+return(list(age_check = age_check, 
+            years_check = years_check, 
+            gender_check = gender_check))
+}
+
+
+check_ages_complete <- function(x) {
+age_complete <- x$age_check %>%
+  magrittr::use_series(present) %>% all
+
+years_complete <- x$years_check %>%
+  magrittr::use_series(present) %>% all
+
+genders_complete <- x$gender_check %>% 
+  use_series(present)  %>% all
+
+return(list(age_complete = age_complete, 
+            years_complete = years_complete, 
+            genders_complete = genders_complete))
+}
+
+
+check_ages_incomplete <- function(x) {
+age_incomplete <- x$age_check %>%
+  magrittr::use_series(present) %>% sum() %>% equals(0)
+
+years_incomplete <- x$years_check %>%
+  magrittr::use_series(present) %>% sum() %>% equals(0)
+
+genders_incomplete <- x$gender_check %>% 
+  use_series(present) %>% sum() %>% equals(0)
+
+return(list(age_incomplete = age_incomplete, 
+            years_incomplete = years_incomplete, 
+            genders_incomplete = genders_incomplete))
+}
+
+check_ages_partial <- function(x) {
+age_partial <- x$age_check %>%
+  magrittr::use_series(present) %>% sum() %>% magrittr::is_less_than(7)
+
+years_partial <- x$years_check %>%
+  magrittr::use_series(present) %>% sum() %>% magrittr::is_less_than(17)
+
+genders_partial <- x$gender_check %>% 
+  use_series(present) %>% sum() %>% magrittr::is_less_than(34)
+
+return(list(age_partial = age_partial, 
+            years_partial = years_partial, 
+            genders_partial = genders_partial))
+}
+```
+ 
+
+
+## clean it
+
+
+```{r}
+
+age_viz %>% 
+  ggplot(aes(key, perc, fill = characteristic)) +
+  geom_area(position = "fill", alpha = 0.8) +
+#  facet_wrap(~gender, ncol = 2) +
+  scale_fill_viridis_d("Gender", begin = 0.2) +
+  scale_color_viridis_d("Gender", begin = 0.2) +
+  theme_minimal() +
+  ggtitle("Refugees arriving in the United States of America by Age Groups (2002 - 2018)\n") +
+  labs(x = "", y = "Percentage of Refugees")  +
+  scale_x_continuous(breaks = 2002:2018, labels = 2002:2018, 
+                     # limits = c(2002, 2020.5),
+                     minor_breaks = seq(2002, 2018, 1)) + 
+  scale_y_continuous(label = scales::percent) +
+  geom_text(data = end_labs, aes(y = perc,
+                               x = 2018,
+                               label = characteristic, 
+                           color = characteristic), 
+                           direction = "x",
+             hjust = 0, nudge_x = 0.1) +
+  guides(fill = F, color = F) +
+  geom_hline(yintercept = 0.5, 
+             linetype = "dashed", 
+             alpha = 0.15) +
+  geom_text(data = by_year_labs, aes(label = round(100*perc_label)), color = "black", size = 2.8, nudge_y = -0.01) +
+  coord_cartesian(clip = 'off') +
+  theme(plot.margin = unit(c(1,4,1,1), "lines"))
+Ignoring unknown parameters: direction
+```
+ 
+
+
+## Religion
+
+```{r}
+religion_viz %>% 
+  ggplot(aes(key, perc, fill = religion_cat)) +
+  geom_area(position = "fill", alpha = 0.8) +
+#  facet_wrap(~gender, ncol = 2) +
+  scale_fill_viridis_d("Gender", begin = 0.2) +
+  scale_color_viridis_d("Gender", begin = 0.2) +
+  theme_minimal() +
+  ggtitle("Refugees arriving in the United States of America by Age Groups (2002 - 2018)\n") +
+  labs(x = "", y = "Percentage of Refugees")  +
+  scale_x_continuous(breaks = 2002:2018, labels = 2002:2018, 
+                     # limits = c(2002, 2020.5),
+                     minor_breaks = seq(2002, 2018, 1)) + 
+  scale_y_continuous(label = scales::percent) +
+  geom_text(data = end_labs, aes(y = perc,
+                               x = 2018,
+                               label = religion_cat, 
+                           color = religion_cat), 
+                           direction = "x",
+             hjust = 0, nudge_x = 0.1) +
+  guides(fill = F, color = F) +
+  geom_hline(yintercept = 0.5, 
+             linetype = "dashed", 
+             alpha = 0.15) +
+  geom_text(data = by_year_labs, aes(label = round(100*perc_label)), color = "black", size = 2.8, nudge_y = -0.01) +
+  coord_cartesian(clip = 'off') +
+  theme(plot.margin = unit(c(1,4,1,1), "lines"))
+
+```
+ 
+
+
+## education
+```{r}
+
+education_viz %>% 
+  ggplot(aes(key, perc, fill = education)) +
+  geom_area(position = "fill", alpha = 0.8) +
+#  facet_wrap(~gender, ncol = 2) +
+  scale_fill_viridis_d("Gender", begin = 0.2) +
+  scale_color_viridis_d("Gender", begin = 0.2) +
+  theme_minimal() +
+  ggtitle("Refugees arriving in the United States of America by Education Levels (2002 - 2018)\n") +
+  labs(x = "", y = "Percentage of Refugees")  +
+  scale_x_continuous(breaks = 2002:2018, labels = 2002:2018, 
+                     limits = c(2002, 2020.5),
+                     minor_breaks = seq(2002, 2018, 1)) + 
+  scale_y_continuous(label = scales::percent) +
+  geom_text(data = end_labs, aes(y = perc,
+                               x = 2018,
+                               label = education, 
+                           color = education), 
+                           direction = "x",
+             hjust = 0, nudge_x = 0.1) +
+  guides(fill = F, color = F) +
+  geom_hline(yintercept = 0.5, 
+             linetype = "dashed", 
+             alpha = 0.35) +
+  geom_text(data = by_year_labs, aes(label = round(100*perc_label)), color = "black", size = 2.8, nudge_y = -0.01)
+ 
+
+```

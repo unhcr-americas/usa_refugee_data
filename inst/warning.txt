@@ -1,0 +1,302 @@
+> checking installed package size ... NOTE
+    installed size is 14.6Mb
+    sub-directories of 1Mb or more:
+      data  12.6Mb
+
+> checking for future file timestamps ... NOTE
+  unable to verify current time
+
+> checking DESCRIPTION meta-information ... NOTE
+  Malformed Description field: should contain one or more complete sentences.
+  Invalid license file pointers: LICENSE
+
+> checking top-level files ... NOTE
+  Non-standard file/directory found at top level:
+    ‘docs’
+
+> checking R code for possible problems ... NOTE
+  check_ages_complete: no visible global function definition for ‘%>%’
+  check_ages_complete: no visible binding for global variable ‘present’
+  check_ages_complete: no visible global function definition for
+    ‘use_series’
+  check_ages_incomplete: no visible global function definition for ‘%>%’
+  check_ages_incomplete: no visible binding for global variable ‘present’
+  check_ages_incomplete: no visible global function definition for
+    ‘equals’
+  check_ages_incomplete: no visible global function definition for
+    ‘use_series’
+  check_ages_partial: no visible global function definition for ‘%>%’
+  check_ages_partial: no visible binding for global variable ‘present’
+  check_ages_partial: no visible global function definition for
+    ‘use_series’
+  download_all: no visible global function definition for ‘glue’
+  download_all: no visible binding for global variable ‘remDr’
+  download_all: no visible global function definition for ‘%>%’
+  download_all: no visible global function definition for ‘extract2’
+  download_all: no visible global function definition for ‘read_html’
+  download_all: no visible global function definition for ‘html_nodes’
+  download_all: no visible global function definition for ‘html_attr’
+  download_all: no visible global function definition for ‘str_detect’
+  get_checkers: no visible global function definition for ‘%>%’
+  get_checkers: no visible binding for global variable
+    ‘department_of_state’
+  get_checkers: no visible global function definition for ‘tibble’
+  get_checkers: no visible binding for global variable ‘complete_ages’
+  get_checkers: no visible binding for global variable ‘.’
+  get_checkers: no visible global function definition for ‘filter’
+  get_checkers: no visible global function definition for ‘na.omit’
+  get_checkers: no visible global function definition for ‘keep’
+  get_checkers: no visible global function definition for ‘str_detect’
+  get_checkers: no visible binding for global variable ‘complete_years’
+  get_checkers: no visible global function definition for ‘as_tibble’
+  get_checkers: no visible binding for global variable ‘V1’
+  get_checkers: no visible binding for global variable ‘V2’
+  get_checkers: no visible global function definition for ‘mutate’
+  get_checkers: no visible global function definition for ‘use_series’
+  get_checkers: no visible binding for global variable ‘tester’
+  get_checkers: no visible binding for global variable ‘complete_genders’
+  get_checkers: no visible global function definition for ‘arrange’
+  is_complete_age: no visible global function definition for ‘%>%’
+  is_complete_age: no visible global function definition for ‘na.omit’
+  is_complete_age: no visible global function definition for ‘map_lgl’
+  is_complete_gender: no visible global function definition for ‘glue’
+  is_complete_gender: no visible global function definition for ‘na.omit’
+  is_complete_gender: no visible global function definition for ‘%>%’
+  is_complete_gender: no visible global function definition for ‘map_lgl’
+  is_complete_years: no visible global function definition for ‘%>%’
+  is_complete_years: no visible global function definition for ‘glue’
+  is_complete_years: no visible global function definition for ‘na.omit’
+  is_complete_years: no visible global function definition for ‘map_lgl’
+  parse_age_data: no visible global function definition for ‘glue’
+  parse_age_data: no visible global function definition for ‘%>%’
+  parse_age_data: no visible binding for global variable ‘as_vector’
+  parse_age_data: no visible binding for global variable
+    ‘department_of_state’
+  parse_age_data: no visible global function definition for ‘filter’
+  parse_age_data: no visible binding for global variable ‘complete_ages’
+  parse_age_data: no visible global function definition for ‘set_names’
+  parse_age_data: no visible binding for global variable ‘.’
+  parse_age_data: no visible global function definition for ‘select_if’
+  parse_age_data : <anonymous>: no visible global function definition for
+    ‘%>%’
+  parse_age_data : <anonymous>: no visible binding for global variable
+    ‘not’
+  parse_age_data: no visible global function definition for ‘gather’
+  parse_age_data: no visible binding for global variable ‘key’
+  parse_age_data: no visible binding for global variable ‘value’
+  parse_age_data: no visible binding for global variable ‘characteristic’
+  parse_age_data: no visible global function definition for ‘mutate’
+  parse_age_data: no visible global function definition for ‘str_detect’
+  parse_age_data: no visible binding for global variable ‘gender’
+  parse_age_data: no visible global function definition for ‘not’
+  parse_age_data: no visible global function definition for
+    ‘parse_number’
+  parse_age_data: no visible global function definition for ‘bind_rows’
+  parse_age_data: no visible global function definition for ‘rename’
+  parse_age_data: no visible binding for global variable ‘Var1’
+  parse_age_data: no visible binding for global variable ‘Var2’
+  parse_age_data: no visible global function definition for ‘full_join’
+  parse_age_data: no visible global function definition for ‘mutate_all’
+  parse_education_data: no visible global function definition for ‘%>%’
+  parse_education_data: no visible global function definition for ‘glue’
+  parse_education_data: no visible binding for global variable
+    ‘department_of_state’
+  parse_education_data: no visible binding for global variable ‘.’
+  parse_education_data: no visible global function definition for
+    ‘set_names’
+  parse_education_data: no visible global function definition for
+    ‘select_if’
+  parse_education_data : <anonymous>: no visible global function
+    definition for ‘%>%’
+  parse_education_data : <anonymous>: no visible binding for global
+    variable ‘not’
+  parse_education_data: no visible global function definition for
+    ‘gather’
+  parse_education_data: no visible binding for global variable ‘key’
+  parse_education_data: no visible binding for global variable ‘value’
+  parse_education_data: no visible binding for global variable
+    ‘education’
+  parse_education_data: no visible global function definition for
+    ‘filter’
+  parse_education_data: no visible global function definition for
+    ‘str_detect’
+  parse_education_data: no visible binding for global variable ‘not’
+  parse_education_data: no visible global function definition for
+    ‘mutate’
+  parse_education_data: no visible binding for global variable ‘gender’
+  parse_education_data: no visible global function definition for ‘not’
+  parse_education_data: no visible global function definition for
+    ‘parse_number’
+  parse_religion_data: no visible global function definition for ‘%>%’
+  parse_religion_data: no visible global function definition for ‘glue’
+  parse_religion_data: no visible binding for global variable
+    ‘department_of_state’
+  parse_religion_data: no visible binding for global variable ‘.’
+  parse_religion_data: no visible global function definition for
+    ‘set_names’
+  parse_religion_data: no visible global function definition for
+    ‘select_if’
+  parse_religion_data : <anonymous>: no visible global function
+    definition for ‘%>%’
+  parse_religion_data : <anonymous>: no visible binding for global
+    variable ‘not’
+  parse_religion_data: no visible global function definition for ‘gather’
+  parse_religion_data: no visible binding for global variable ‘key’
+  parse_religion_data: no visible binding for global variable ‘value’
+  parse_religion_data: no visible binding for global variable ‘religion’
+  parse_religion_data: no visible global function definition for ‘filter’
+  parse_religion_data: no visible global function definition for
+    ‘str_detect’
+  parse_religion_data: no visible binding for global variable ‘not’
+  parse_religion_data: no visible global function definition for ‘mutate’
+  parse_religion_data: no visible binding for global variable ‘gender’
+  parse_religion_data: no visible global function definition for ‘not’
+  parse_religion_data: no visible global function definition for
+    ‘parse_number’
+  plot_age_viz: no visible global function definition for ‘%>%’
+  plot_age_viz: no visible global function definition for ‘bind_rows’
+  plot_age_viz: no visible global function definition for ‘filter’
+  plot_age_viz: no visible binding for global variable ‘characteristic’
+  plot_age_viz: no visible global function definition for ‘group_by’
+  plot_age_viz: no visible binding for global variable ‘key’
+  plot_age_viz: no visible binding for global variable ‘gender’
+  plot_age_viz: no visible global function definition for ‘summarise’
+  plot_age_viz: no visible binding for global variable ‘value’
+  plot_age_viz: no visible global function definition for ‘ggplot’
+  plot_age_viz: no visible global function definition for ‘aes’
+  plot_age_viz: no visible global function definition for ‘geom_line’
+  plot_age_viz: no visible global function definition for ‘facet_wrap’
+  plot_age_viz: no visible global function definition for
+    ‘scale_color_viridis_d’
+  plot_age_viz: no visible global function definition for ‘theme_minimal’
+  plot_age_viz: no visible global function definition for ‘ggtitle’
+  plot_age_viz: no visible global function definition for ‘labs’
+  plot_age_viz: no visible global function definition for ‘theme’
+  plot_age_viz: no visible binding for global variable ‘bind_rows’
+  plot_age_viz: no visible global function definition for ‘mutate’
+  plot_age_viz: no visible binding for global variable ‘complete_ages’
+  plot_age_viz: no visible global function definition for ‘summarize’
+  plot_age_viz: no visible binding for global variable ‘total’
+  plot_age_viz: no visible global function definition for ‘ungroup’
+  plot_age_viz: no visible binding for global variable ‘perc’
+  plot_age_viz: no visible global function definition for ‘arrange’
+  plot_age_viz: no visible global function definition for ‘desc’
+  plot_age_viz: no visible binding for global variable ‘perc2’
+  plot_age_viz: no visible global function definition for ‘case_when’
+  plot_age_viz: no visible global function definition for ‘geom_area’
+  plot_age_viz: no visible global function definition for
+    ‘scale_fill_viridis_d’
+  plot_age_viz: no visible global function definition for
+    ‘scale_x_continuous’
+  plot_age_viz: no visible global function definition for
+    ‘scale_y_continuous’
+  plot_age_viz: no visible global function definition for ‘geom_text’
+  plot_age_viz: no visible global function definition for ‘guides’
+  plot_age_viz: no visible global function definition for ‘geom_hline’
+  plot_age_viz: no visible binding for global variable ‘perc_label’
+  plot_age_viz: no visible global function definition for
+    ‘coord_cartesian’
+  plot_age_viz: no visible global function definition for ‘unit’
+  plot_educ_viz: no visible global function definition for ‘%>%’
+  plot_educ_viz: no visible global function definition for ‘mutate’
+  plot_educ_viz: no visible global function definition for ‘case_when’
+  plot_educ_viz: no visible binding for global variable ‘education’
+  plot_educ_viz: no visible global function definition for ‘filter’
+  plot_educ_viz: no visible binding for global variable ‘gender’
+  plot_educ_viz: no visible global function definition for ‘group_by’
+  plot_educ_viz: no visible binding for global variable ‘key’
+  plot_educ_viz: no visible global function definition for ‘summarize’
+  plot_educ_viz: no visible binding for global variable ‘value’
+  plot_educ_viz: no visible binding for global variable ‘total’
+  plot_educ_viz: no visible global function definition for ‘ungroup’
+  plot_educ_viz: no visible binding for global variable ‘perc’
+  plot_educ_viz: no visible global function definition for ‘arrange’
+  plot_educ_viz: no visible global function definition for ‘desc’
+  plot_educ_viz: no visible binding for global variable ‘perc2’
+  plot_educ_viz: no visible global function definition for ‘ggplot’
+  plot_educ_viz: no visible global function definition for ‘aes’
+  plot_educ_viz: no visible global function definition for ‘geom_area’
+  plot_educ_viz: no visible global function definition for
+    ‘scale_fill_viridis_d’
+  plot_educ_viz: no visible global function definition for
+    ‘scale_color_viridis_d’
+  plot_educ_viz: no visible global function definition for
+    ‘theme_minimal’
+  plot_educ_viz: no visible global function definition for ‘ggtitle’
+  plot_educ_viz: no visible global function definition for ‘labs’
+  plot_educ_viz: no visible global function definition for
+    ‘scale_x_continuous’
+  plot_educ_viz: no visible global function definition for
+    ‘scale_y_continuous’
+  plot_educ_viz: no visible global function definition for ‘geom_text’
+  plot_educ_viz: no visible global function definition for ‘guides’
+  plot_educ_viz: no visible global function definition for ‘geom_hline’
+  plot_educ_viz: no visible binding for global variable ‘perc_label’
+  plot_religion_viz: no visible global function definition for ‘%>%’
+  plot_religion_viz: no visible global function definition for ‘mutate’
+  plot_religion_viz: no visible global function definition for
+    ‘case_when’
+  plot_religion_viz: no visible global function definition for ‘filter’
+  plot_religion_viz: no visible binding for global variable ‘gender’
+  plot_religion_viz: no visible global function definition for ‘group_by’
+  plot_religion_viz: no visible binding for global variable ‘key’
+  plot_religion_viz: no visible binding for global variable
+    ‘religion_cat’
+  plot_religion_viz: no visible global function definition for
+    ‘summarize’
+  plot_religion_viz: no visible binding for global variable ‘value’
+  plot_religion_viz: no visible binding for global variable ‘total’
+  plot_religion_viz: no visible global function definition for ‘ungroup’
+  plot_religion_viz: no visible binding for global variable ‘perc’
+  plot_religion_viz: no visible global function definition for ‘arrange’
+  plot_religion_viz: no visible global function definition for ‘desc’
+  plot_religion_viz: no visible binding for global variable ‘perc2’
+  plot_religion_viz: no visible global function definition for ‘ggplot’
+  plot_religion_viz: no visible global function definition for ‘aes’
+  plot_religion_viz: no visible global function definition for
+    ‘geom_area’
+  plot_religion_viz: no visible global function definition for
+    ‘scale_fill_viridis_d’
+  plot_religion_viz: no visible global function definition for
+    ‘scale_color_viridis_d’
+  plot_religion_viz: no visible global function definition for
+    ‘theme_minimal’
+  plot_religion_viz: no visible global function definition for ‘ggtitle’
+  plot_religion_viz: no visible global function definition for ‘labs’
+  plot_religion_viz: no visible global function definition for
+    ‘scale_x_continuous’
+  plot_religion_viz: no visible global function definition for
+    ‘scale_y_continuous’
+  plot_religion_viz: no visible global function definition for
+    ‘geom_text’
+  plot_religion_viz: no visible global function definition for ‘guides’
+  plot_religion_viz: no visible global function definition for
+    ‘geom_hline’
+  plot_religion_viz: no visible binding for global variable ‘perc_label’
+  plot_religion_viz: no visible global function definition for
+    ‘coord_cartesian’
+  plot_religion_viz: no visible global function definition for ‘theme’
+  plot_religion_viz: no visible global function definition for ‘unit’
+  set_up: no visible binding for global variable ‘remDr’
+  set_up: no visible binding for global variable ‘cntry_selector’
+  Undefined global functions or variables:
+    %>% . V1 V2 Var1 Var2 aes arrange as_tibble as_vector bind_rows
+    case_when characteristic cntry_selector complete_ages
+    complete_genders complete_years coord_cartesian department_of_state
+    desc education equals extract2 facet_wrap filter full_join gather
+    gender geom_area geom_hline geom_line geom_text ggplot ggtitle glue
+    group_by guides html_attr html_nodes keep key labs map_lgl mutate
+    mutate_all na.omit not parse_number perc perc2 perc_label present
+    read_html religion religion_cat remDr rename scale_color_viridis_d
+    scale_fill_viridis_d scale_x_continuous scale_y_continuous select_if
+    set_names str_detect summarise summarize tester theme theme_minimal
+    tibble total ungroup unit use_series value
+  Consider adding
+    importFrom("stats", "filter", "na.omit")
+  to your NAMESPACE file.
+
+0 errors ✓ | 5 warnings x | 5 notes x
+Error: R CMD check found WARNINGs
+Execution halted
+
+Exited with status 1.

@@ -1,5 +1,19 @@
-Exploring U.S. Refugee Data
-================
+---
+title: "A Short History of Refugees in the U.S."
+date: '21.09.2018'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A Short History of Refugees in the U.S.}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ### A Short History of Refugees in the U.S.
 

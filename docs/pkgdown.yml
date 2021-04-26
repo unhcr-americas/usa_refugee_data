@@ -1,0 +1,10 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  Intro: Intro.html
+  dem_scraper: dem_scraper.html
+  impakter: impakter.html
+  refugee_analysis: refugee_analysis.html
+last_built: 2021-04-26T14:54Z
+

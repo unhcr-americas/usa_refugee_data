@@ -1,15 +1,26 @@
 ---
-title: "R Notebook"
-output: html_document
+title: "Demo Scrapper"
+date: '21.09.2018'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demo Scrapper}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 ## Load Packages
 
 ```{r}
 pacman::p_load(tidyverse, rvest, RSelenium, seleniumPipes, glue)
 
-source("scripts/scrape_helpers.R")
-
+#source("scripts/scrape_helpers.R")
+library(usaRefugeeData)
 
 ```
 
@@ -44,7 +55,7 @@ cntry_names <- read_html("http://ireports.wrapsnet.org/Interactive-Reporting/Enu
   html_text() %>% 
   keep(str_detect(., "Value") %>% not)
 
-rename_dat <- dir("C:/Users/fabio/Downloads") %>% 
+rename_dat <- dir(glue::glue("{getwd()}/data")) %>% 
   keep(str_detect(., "desktop") %>% not) %>% 
   parse_number() %>% 
   sort() %>% 
@@ -65,7 +76,7 @@ rename_dat
 ### Age Dataset
 
 ```{r}
-age_dataset <- dir("C:/Users/fabio/Downloads/") %>% 
+age_dataset <- dir(glue::glue("{getwd()}/data")) %>% 
   keep(str_detect(., "_")) %>% 
   str_remove(".xls") %>%
   discard(str_detect(., "no_data")) %>% 
