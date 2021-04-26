@@ -5,10 +5,10 @@ Accepted Refugees United States
 This package is built on the work from [Fabio Votta](https://favstats.eu) for the preparation of the article [Exploring U.S. Refugee Data](https://favstats.eu/post/exploring_us_refugee_data/) . 
 
 
-The original script were scraping data from from US Refugee Processing Center (RPC): <http://ireports.wrapsnet.org/Interactive-Reporting/EnumType/Report?ItemPath=/rpt_WebArrivalsReports/MX%20-%20Arrivals%20by%20Nationality%20and%20Religion> that has been now decommissioned.
+The original script were scraping data from from [US Refugee Processing Center (RPC)](https://www.wrapsnet.org/admissions-and-arrivals/)  that has been now decommissioned.
 
-![ ](https://raw.githubusercontent.com/unhcr-americas/usa_refugee_data/master/inst/refdata.jpg)
 
+![ ](inst/refdata.jpg?raw=true "Refugee Processing Center")
 
 ## Install
 
