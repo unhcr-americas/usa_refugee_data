@@ -7,7 +7,7 @@ This package is built on the work from [Fabio Votta](https://favstats.eu) for th
 
 The original script were scraping data from from US Refugee Processing Center (RPC): <http://ireports.wrapsnet.org/Interactive-Reporting/EnumType/Report?ItemPath=/rpt_WebArrivalsReports/MX%20-%20Arrivals%20by%20Nationality%20and%20Religion> that has been now decommissioned.
 
-
+![ ](https://raw.githubusercontent.com/unhcr-americas/usa_refugee_data/master/inst/refdata.jpg)
 
 
 ## Install
